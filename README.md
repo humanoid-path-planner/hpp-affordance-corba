@@ -13,28 +13,31 @@ Please refer to this [link](https://github.com/anna-seppala/hpp-affordance) for 
 To install hpp-affordance-corba:
 
   1. install HPP
-	- see https://github.com/humanoid-path-planner/hpp-doc
+	- see https://github.com/humanoid-path-planner/hpp-doc/tree/devel
 
   2. install HPP-AFFORDANCE
-	- see https://github.com/anna-seppala/hpp-affordance
+	- see https://github.com/humanoid-path-planner/hpp-affordance
+	
+  3. Install hpp-template-corba :
+  			
+	- see 	https://github.com/laas/hpp-template-corba
+	
+  4. Clone the HPP-AFFORDANCE-CORBA repository onto your local computer and update the submodule:
 
-  3. Clone the HPP-AFFORDANCE-CORBA repository onto your local computer and update the submodule:
-
-			git clone https://github.com/anna-seppala/hpp-affordance-corba.git
+			git clone --recursive https://github.com/humanoid-path-planner/hpp-affordance-corba/
 			cd $HPP_AFFORDANCE_CORBA_DIR/
-			git submodule update --init --recursive
 
-  4. Use CMake to install the HPP-AFFORDANCE-CORBA library. For instance:
+  5. Use CMake to install the HPP-AFFORDANCE-CORBA library. For instance:
 
 			mkdir build
 			cd build
-			cmake ..
+			cmake -DCMAKE_INSTALL_PREFIX=${DEVEL_DIR}/install ..
 			make install
 
-  5. Optionally, install the HPP-RBPRM and HPP-RBPRM-CORBA packages that implement an efficient acyclic contact planner,
-		 and its python bindings, respectively. (Make sure you are on branch "affordance" in both repositories!)
-	- see https://github.com/anna-seppala/hpp-rbprm, and
-		https://github.com/anna-seppala/hpp-rbprm-corba
+  6. Optionally, install the HPP-RBPRM and HPP-RBPRM-CORBA packages that implement an efficient acyclic contact planner,
+		 and its python bindings, respectively.
+	- see https://github.com/stonneau/hpp-rbprm, and
+		https://github.com/stonneau/hpp-rbprm-corba
 
 ##Documentation
 
