@@ -28,14 +28,21 @@ main (int argc, const char* argv[])
   AffordanceServer affServer (argc, argv, true);
   affServer.setProblemSolverMap (corbaServer.problemSolverMap());
 
+  std::string contextId("hpp");
+  std::string postContextId("");
+  if(argc>1) {
+      postContextId = std::string(argv[1]);
+      contextId.append(std::string(argv[1]));
+  }
+
   try {
-    corbaServer.startCorbaServer ();
+    corbaServer.startCorbaServer (postContextId);
     hppDout (info, "successfully started hpp-corbaserver");
   } catch (const std::exception& exc) {
     hppDout (error, "Failed to start hpp-corbaserver");
   }
   try {
-    affServer.startCorbaServer ("hpp", "corbaserver",
+    affServer.startCorbaServer (contextId, "corbaserver",
 				"affordanceCorba", "affordance");
 
     hppDout (info, "Successfully started corba server for affordance");
