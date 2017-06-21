@@ -33,7 +33,7 @@ class Client:
   """
   Connect and create clients for hpp-affordance library.
   """
-  def __init__(self):
+  def __init__(self, postContextId = ""):
     """
     Initialize CORBA and create default clients.
     """
@@ -44,7 +44,7 @@ class Client:
     if self.rootContext is None:
         raise CorbaError ('failed to narrow the root context')
 
-    name = [CosNaming.NameComponent ("hpp", "corbaserver"),
+    name = [CosNaming.NameComponent ("hpp" + postContextId, "corbaserver"),
             CosNaming.NameComponent ("affordanceCorba", "affordance")]
 
     try:
