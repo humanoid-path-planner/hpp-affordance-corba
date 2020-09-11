@@ -38,7 +38,6 @@ FINDPYTHON()
 ADD_PROJECT_DEPENDENCY("hpp-core" REQUIRED)
 ADD_PROJECT_DEPENDENCY("hpp-affordance" REQUIRED)
 ADD_PROJECT_DEPENDENCY("hpp-corbaserver" REQUIRED)
-ADD_PROJECT_DEPENDENCY("Boost" REQUIRED COMPONENTS thread date_time system REQUIRED)
 ADD_REQUIRED_DEPENDENCY("omniORB4 >= 4.1.4")
 
 # Make sure that python submodule is installed in the same prefix as module.
