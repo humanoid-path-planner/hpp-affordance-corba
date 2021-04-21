@@ -69,10 +69,6 @@ ADD_SUBDIRECTORY(src)
 CONFIG_FILES (include/${CUSTOM_HEADER_DIR}/doc.hh)
 
 install(FILES
-  data/package.xml
-  DESTINATION share/${PROJECT_NAME})
-
-install(FILES
   data/urdf/hyq/hyq_trunk_large.urdf
   data/urdf/darpa.urdf
   data/urdf/box.urdf
@@ -95,3 +91,5 @@ install(FILES
   DESTINATION share/${PROJECT_NAME}/meshes/hyq)
 
 PKG_CONFIG_APPEND_LIBS(${PROJECT_NAME})
+
+INSTALL(FILES package.xml DESTINATION share/${PROJECT_NAME})
