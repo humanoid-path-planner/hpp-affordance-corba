@@ -30,44 +30,43 @@ class Afford : public virtual POA_hpp::corbaserver::affordance::Afford {
 
   Afford(const core::ProblemSolverPtr_t& problemSolver);
 
-  void resetAffordanceConfig() throw(hpp::Error);
+  void resetAffordanceConfig();
 
-  affordance::OperationBases_t createOperations() throw(hpp::Error);
+  affordance::OperationBases_t createOperations();
 
-  void setAffordanceConfig(const char* affType, const hpp::doubleSeq& conf) throw(hpp::Error);
+  void setAffordanceConfig(const char* affType, const hpp::doubleSeq& conf);
 
-  hpp::doubleSeq* getAffordanceConfig(const char* affType) throw(hpp::Error);
+  hpp::doubleSeq* getAffordanceConfig(const char* affType);
 
-  void setMargin(const char* affType, CORBA::Double margin) throw(hpp::Error);
+  void setMargin(const char* affType, CORBA::Double margin);
 
-  void setNeighbouringTriangleMargin(const char* affType, CORBA::Double nbTriMargin) throw(hpp::Error);
+  void setNeighbouringTriangleMargin(const char* affType, CORBA::Double nbTriMargin);
 
-  void setMinimumArea(const char* affType, CORBA::Double minArea) throw(hpp::Error);
+  void setMinimumArea(const char* affType, CORBA::Double minArea);
 
-  bool checkModel(const char* obstacleName) throw(hpp::Error);
+  bool checkModel(const char* obstacleName);
 
   void affordanceAnalysis(const char* obstacleName, const affordance::OperationBases_t& operations,
-                          std::vector<double> reduceSizes = std::vector<double>()) throw(hpp::Error);
+                          std::vector<double> reduceSizes = std::vector<double>());
 
-  void analyseObject(const char* obstacleName, const hpp::doubleSeq& reduceSizesCorba) throw(hpp::Error);
+  void analyseObject(const char* obstacleName, const hpp::doubleSeq& reduceSizesCorba);
 
-  void analyseAll(const hpp::doubleSeq& reduceSizesCorba) throw(hpp::Error);
+  void analyseAll(const hpp::doubleSeq& reduceSizesCorba);
 
-  void deleteAffordancesByType(const char* affordance, const char* obstacleName) throw(hpp::Error);
+  void deleteAffordancesByType(const char* affordance, const char* obstacleName);
 
-  void deleteAffordances(const char* obstacleName) throw(hpp::Error);
+  void deleteAffordances(const char* obstacleName);
 
   void addAffObjects(const affordance::OperationBases_t& ops,
-                     const std::vector<affordance::CollisionObjects_t>& affObjs,
-                     const char* obstacleName) throw(hpp::Error);
+                     const std::vector<affordance::CollisionObjects_t>& affObjs, const char* obstacleName);
 
-  hpp::doubleSeqSeqSeqSeq* getAffordancePoints(const char* affordance) throw(hpp::Error);
+  hpp::doubleSeqSeqSeqSeq* getAffordancePoints(const char* affordance);
 
-  hpp::Names_t* getAffRefObstacles(const char* affordance) throw(hpp::Error);
+  hpp::Names_t* getAffRefObstacles(const char* affordance);
 
-  hpp::Names_t* getAffordanceTypes() throw(hpp::Error);
+  hpp::Names_t* getAffordanceTypes();
 
-  hpp::Names_t* getAffordanceConfigTypes() throw(hpp::Error);
+  hpp::Names_t* getAffordanceConfigTypes();
 
  private:
   Server* server_;
