@@ -9,42 +9,37 @@
 // See the COPYING file for more information.
 
 #ifndef HPP_AFFORDANCE_CORBA_SERVER_HH
-# define HPP_AFFORDANCE_CORBA_SERVER_HH
+#define HPP_AFFORDANCE_CORBA_SERVER_HH
 
-# include <hpp/corba/template/server.hh>
-# include <hpp/corbaserver/server-plugin.hh>
-# include <hpp/corbaserver/affordance/fwd.hh>
-# include <hpp/corbaserver/affordance/config.hh>
-# include "hpp/corbaserver/problem-solver-map.hh"
+#include <hpp/corba/template/server.hh>
+#include <hpp/corbaserver/server-plugin.hh>
+#include <hpp/corbaserver/affordance/fwd.hh>
+#include <hpp/corbaserver/affordance/config.hh>
+#include "hpp/corbaserver/problem-solver-map.hh"
 
-namespace hpp
-{
-  namespace affordanceCorba
-  {
-    namespace impl
-    {
-      class Afford;
-    } // namespace impl
+namespace hpp {
+namespace affordanceCorba {
+namespace impl {
+class Afford;
+}  // namespace impl
 
-    class HPP_AFFORDANCE_CORBA_DLLAPI Server : public corbaServer::ServerPlugin
-    {
-    public:
-      Server (corbaServer::Server* parent);
+class HPP_AFFORDANCE_CORBA_DLLAPI Server : public corbaServer::ServerPlugin {
+ public:
+  Server(corbaServer::Server* parent);
 
-      /// \brief Shutdown CORBA server
-      ~Server ();
+  /// \brief Shutdown CORBA server
+  ~Server();
 
-      void startCorbaServer(const std::string& contextId,
-			    const std::string& contextKind);
+  void startCorbaServer(const std::string& contextId, const std::string& contextKind);
 
-      std::string name () const;
+  std::string name() const;
 
-      ::CORBA::Object_ptr servant (const std::string& name) const;
+  ::CORBA::Object_ptr servant(const std::string& name) const;
 
-    private:
-      corba::Server <impl::Afford>* impl_;
-    };
+ private:
+  corba::Server<impl::Afford>* impl_;
+};
 
-  } // end of namespace affordanceCorba.
-} // end of namespace hpp.
-#endif // HPP_AFFORDANCE_CORBA_SERVER_HH
+}  // end of namespace affordanceCorba.
+}  // end of namespace hpp.
+#endif  // HPP_AFFORDANCE_CORBA_SERVER_HH
