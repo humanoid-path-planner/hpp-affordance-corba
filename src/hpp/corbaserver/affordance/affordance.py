@@ -29,7 +29,7 @@ class CorbaClient:
     Container for corba clients to various interfaces.
     """
     def __init__(self, context=None):
-        if context==None:
+        if context is None:
             self.basic = BasicClient()
             self.affordance = AffClient()
         else:
@@ -180,8 +180,7 @@ class AffordanceTool(object):
     #         is loaded several times. It should not cointain the '/' character
     #  \param Viewer viewer object to load loaded obstacles to visualiser
     #  \param guiOnly whether to control only gepetto-viewer-server
-    def loadObstacleModel(self, filename, prefix, Viewer, guiOnly=False,
-                          reduceSizes=[]):
+    def loadObstacleModel(self, filename, prefix, Viewer, guiOnly=False, reduceSizes=[]):
         Viewer.loadObstacleModel(filename, prefix, guiOnly)
         import re
         objNames = self.client.basic.obstacle.getObstacleNames(True, False)
@@ -329,7 +328,7 @@ class AffordanceTool(object):
                         toDelete = aff + '-' + refs[count]
                         nodes = Viewer.client.gui.getGroupNodeList(aff)
                         for node in nodes:
-                            splt = re.split('\.', node)
+                            splt = re.split(r'\.', node)
                             if splt[0] == toDelete:
                                 self.deleteNode(node, True, Viewer)
                     count += 1
@@ -376,7 +375,7 @@ class AffordanceTool(object):
                             toDelete = aff + '-' + refs[count]
                             nodes = Viewer.client.gui.getNodeList()
                             for node in nodes:
-                                splt = re.split('\.', node)
+                                splt = re.split(r'\.', node)
                                 if splt[0] == toDelete:
                                     self.deleteNode(node, True, Viewer)
                         count += 1
