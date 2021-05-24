@@ -9,94 +9,71 @@
 // See the COPYING file for more information.
 
 #ifndef HPP_AFFORDANCE_CORBA_IMPL_HH
-# define HPP_AFFORDANCE_CORBA_IMPL_HH
-# include <omniORB4/CORBA.h>
-# include <hpp/fcl/BVH/BVH_model.h>
-# include "hpp/core/problem-solver.hh"
-# include "hpp/corbaserver/problem-solver-map.hh"
-# include "hpp/corbaserver/affordance/fwd.hh"
-# include "hpp/corbaserver/affordance/server.hh"
+#define HPP_AFFORDANCE_CORBA_IMPL_HH
+#include <omniORB4/CORBA.h>
+#include <hpp/fcl/BVH/BVH_model.h>
+#include "hpp/core/problem-solver.hh"
+#include "hpp/corbaserver/problem-solver-map.hh"
+#include "hpp/corbaserver/affordance/fwd.hh"
+#include "hpp/corbaserver/affordance/server.hh"
 
-# include "affordance-idl.hh"
+#include "affordance-idl.hh"
 
-namespace hpp
-{
-  namespace affordanceCorba
-  {
-    namespace impl
-    {
-      class Afford : public virtual
-      POA_hpp::corbaserver::affordance::Afford
-      {
-      public:
+namespace hpp {
+namespace affordanceCorba {
+namespace impl {
+class Afford : public virtual POA_hpp::corbaserver::affordance::Afford {
+ public:
+  Afford();
 
-	      Afford ();
+  void setServer(Server* server) { server_ = server; }
 
-				void setServer (Server* server)
-				{
-					server_ = server;
-				}
+  Afford(const core::ProblemSolverPtr_t& problemSolver);
 
-				Afford (const core::ProblemSolverPtr_t& problemSolver);
+  void resetAffordanceConfig();
 
-				void resetAffordanceConfig() throw (hpp::Error);
+  affordance::OperationBases_t createOperations();
 
-				affordance::OperationBases_t createOperations () throw (hpp::Error);
+  void setAffordanceConfig(const char* affType, const hpp::doubleSeq& conf);
 
-				void setAffordanceConfig (const char* affType, const hpp::doubleSeq& conf)
-					throw (hpp::Error);
+  hpp::doubleSeq* getAffordanceConfig(const char* affType);
 
-				hpp::doubleSeq* getAffordanceConfig (const char* affType)
-					throw (hpp::Error);
+  void setMargin(const char* affType, CORBA::Double margin);
 
-				void setMargin (const char* affType, CORBA::Double margin)
-					throw (hpp::Error);
+  void setNeighbouringTriangleMargin(const char* affType, CORBA::Double nbTriMargin);
 
-				void setNeighbouringTriangleMargin (const char* affType,
-					CORBA::Double nbTriMargin) throw (hpp::Error);
-					
-				void setMinimumArea (const char* affType, CORBA::Double minArea)
-					throw (hpp::Error);
+  void setMinimumArea(const char* affType, CORBA::Double minArea);
 
-        bool checkModel (const char* obstacleName) throw (hpp::Error);
+  bool checkModel(const char* obstacleName);
 
-				void affordanceAnalysis (const char* obstacleName, 
-                    const affordance::OperationBases_t & operations,std::vector<double> reduceSizes=std::vector<double>()) throw (hpp::Error);
+  void affordanceAnalysis(const char* obstacleName, const affordance::OperationBases_t& operations,
+                          std::vector<double> reduceSizes = std::vector<double>());
 
-                void analyseObject (const char* obstacleName, const hpp::doubleSeq& reduceSizesCorba) throw (hpp::Error);
-				
-                void analyseAll (const hpp::doubleSeq& reduceSizesCorba) throw (hpp::Error);
+  void analyseObject(const char* obstacleName, const hpp::doubleSeq& reduceSizesCorba);
 
-				void deleteAffordancesByType (const char* affordance,
-					const char* obstacleName) throw (hpp::Error);
+  void analyseAll(const hpp::doubleSeq& reduceSizesCorba);
 
-					void deleteAffordances (const char* obstacleName)
-						throw (hpp::Error);
+  void deleteAffordancesByType(const char* affordance, const char* obstacleName);
 
-				void addAffObjects (const affordance::OperationBases_t& ops,
-					const std::vector<affordance::CollisionObjects_t>& affObjs,
-					const char* obstacleName) 
-					throw (hpp::Error);
-				
-				hpp::doubleSeqSeqSeqSeq* getAffordancePoints (const char* affordance)
-					throw (hpp::Error);
+  void deleteAffordances(const char* obstacleName);
 
-				hpp::Names_t* getAffRefObstacles (const char* affordance)
-					throw (hpp::Error);
+  void addAffObjects(const affordance::OperationBases_t& ops,
+                     const std::vector<affordance::CollisionObjects_t>& affObjs, const char* obstacleName);
 
-				hpp::Names_t* getAffordanceTypes () throw (hpp::Error);
+  hpp::doubleSeqSeqSeqSeq* getAffordancePoints(const char* affordance);
 
-        hpp::Names_t* getAffordanceConfigTypes () throw (hpp::Error);
+  hpp::Names_t* getAffRefObstacles(const char* affordance);
 
-      private:
-          Server* server_;
-          core::ProblemSolverPtr_t problemSolver()
-          {
-              return server_->problemSolver();
-          }
-      }; // class Afford
-    } // namespace impl
-  } // namespace affordanceCorba
-} // namespace hpp
+  hpp::Names_t* getAffordanceTypes();
 
-#endif //HPP_AFFORDANCE_CORBA_IMPL_HH
+  hpp::Names_t* getAffordanceConfigTypes();
+
+ private:
+  Server* server_;
+  core::ProblemSolverPtr_t problemSolver() { return server_->problemSolver(); }
+};  // class Afford
+}  // namespace impl
+}  // namespace affordanceCorba
+}  // namespace hpp
+
+#endif  // HPP_AFFORDANCE_CORBA_IMPL_HH

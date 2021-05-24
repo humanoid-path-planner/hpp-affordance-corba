@@ -15,44 +15,32 @@
 #include <hpp/corbaserver/server.hh>
 #include "affordance.impl.hh"
 
-namespace hpp
-{
-  namespace affordanceCorba
-  {
-    Server::Server (corbaServer::Server* server)
-      : corbaServer::ServerPlugin (server),
-      impl_ (NULL)
-    {}
+namespace hpp {
+namespace affordanceCorba {
+Server::Server(corbaServer::Server* server) : corbaServer::ServerPlugin(server), impl_(NULL) {}
 
-    Server::~Server ()
-    {
-      if (impl_) delete impl_;
-    }
+Server::~Server() {
+  if (impl_) delete impl_;
+}
 
-    std::string Server::name () const
-    {
-      return "affordance";
-    }
+std::string Server::name() const { return "affordance"; }
 
-    /// Start corba server
-    void Server::startCorbaServer(const std::string& contextId,
-				  const std::string& contextKind)
-    {
-      initializeTplServer (impl_, contextId, contextKind, name(), "affordance");
-      impl_->implementation ().setServer (this);
+/// Start corba server
+void Server::startCorbaServer(const std::string& contextId, const std::string& contextKind) {
+  initializeTplServer(impl_, contextId, contextKind, name(), "affordance");
+  impl_->implementation().setServer(this);
 
-      // TODO this a very fragile. It works because startCorbaServer is called
-      // after setProblemSolverMap in hpp::corbaServer::Server::getContext
-      // implementation (file hpp-corbaserver/src/server.cc)
-      impl_->implementation().resetAffordanceConfig();
-    }
+  // TODO this a very fragile. It works because startCorbaServer is called
+  // after setProblemSolverMap in hpp::corbaServer::Server::getContext
+  // implementation (file hpp-corbaserver/src/server.cc)
+  impl_->implementation().resetAffordanceConfig();
+}
 
-    ::CORBA::Object_ptr Server::servant(const std::string& name) const
-    {
-      if (name == "affordance") return impl_->implementation()._this();
-      throw std::invalid_argument ("No servant " + name);
-    }
-  } // namespace affordanceCorba
-} // namespace hpp
+::CORBA::Object_ptr Server::servant(const std::string& name) const {
+  if (name == "affordance") return impl_->implementation()._this();
+  throw std::invalid_argument("No servant " + name);
+}
+}  // namespace affordanceCorba
+}  // namespace hpp
 
 HPP_CORBASERVER_DEFINE_PLUGIN(hpp::affordanceCorba::Server)

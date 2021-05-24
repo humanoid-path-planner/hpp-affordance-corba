@@ -18,14 +18,11 @@ typedef hpp::corbaServer::Server CorbaServer;
 typedef hpp::core::ProblemSolverPtr_t ProblemSolverPtr_t;
 typedef hpp::core::ProblemSolver ProblemSolver;
 
-int
-main (int argc, const char* argv[])
-{
-  ProblemSolverPtr_t problemSolver = ProblemSolver::create ();
-  CorbaServer corbaServer (problemSolver, argc,
-			   const_cast<const char**> (argv), true);
+int main(int argc, const char* argv[]) {
+  ProblemSolverPtr_t problemSolver = ProblemSolver::create();
+  CorbaServer corbaServer(problemSolver, argc, const_cast<const char**>(argv), true);
 
-  corbaServer.startCorbaServer ();
-  corbaServer.loadPlugin (corbaServer.mainContextId(), "affordance-corba.so");
+  corbaServer.startCorbaServer();
+  corbaServer.loadPlugin(corbaServer.mainContextId(), "affordance-corba.so");
   corbaServer.processRequest(true);
 }
