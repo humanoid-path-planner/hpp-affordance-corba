@@ -28,12 +28,12 @@ class Client(_Parent):
         'affordance': Afford,
     }
 
-    def __init__(self, url=None, context="corbaserver"):
+    def __init__(self, url=None, context="corbaserver", port=13331):
         """
     Initialize CORBA and create default clients.
     :param url: URL in the IOR, corbaloc, corbalocs, and corbanames formats.
                 For a remote corba server, use
                 url = "corbaloc:iiop:<host>:<port>/NameService"
     """
-        self._initOrb(url)
+        self._initOrb(url, port=port)
         self._makeClients("affordance", self.defaultClients, context)
