@@ -142,7 +142,7 @@ bool isBVHModelTriangles(
     const hpp::pinocchio::FclCollisionObjectPtr_t& object) {
   if (object->collisionGeometry()->getNodeType() == fcl::BV_OBBRSS) {
     const affordance::BVHModelOBConst_Ptr_t model =
-        boost::static_pointer_cast<const affordance::BVHModelOB>(
+        static_pointer_cast<const affordance::BVHModelOB>(
             object->collisionGeometry());
     if (model->getModelType() == fcl::BVH_MODEL_TRIANGLES) {
       return true;
@@ -209,7 +209,7 @@ void Afford::analyseAll(const hpp::doubleSeq& reduceSizesCorba) {
   problemSolver()
       ->affordanceObjects
       .clear();  // clear
-                 // <std::vector<boost::shared_ptr<hpp::pinocchio::CollisionObject>
+                 // <std::vector<shared_ptr<hpp::pinocchio::CollisionObject>
                  // > > ();
   affordance::OperationBases_t operations = createOperations();
   for (hpp::ObjectStdVector_t::const_iterator objIt =
@@ -254,12 +254,12 @@ void Afford::deleteAffordances(const char* obstacleNameNonAff) {
   if (obstacleName == noObject) {
     // if no obstacleName given, delete all affs in problemSolver
     // problemSolver()->clear
-    // <std::vector<boost::shared_ptr<hpp::pinocchio::CollisionObject> > > ();
+    // <std::vector<shared_ptr<hpp::pinocchio::CollisionObject> > > ();
     problemSolver()->affordanceObjects.clear();
   } else {
     std::list<std::string> keys =
         problemSolver()->obstacleNames(true, false); /*problemSolver()->getKeys
-<std::vector<boost::shared_ptr<hpp::pinocchio::CollisionObject> >,
+<std::vector<shared_ptr<hpp::pinocchio::CollisionObject> >,
 std::list<std::string> > ();*/
     std::list<std::string>::iterator affIt = keys.begin();
     for (; affIt != keys.end(); affIt++) {

@@ -32,12 +32,12 @@ typedef core::ProblemSolver ProblemSolver;
 typedef core::ProblemSolverPtr_t ProblemSolverPtr_t;
 
 typedef fcl::CollisionGeometry CollisionGeometry_t;
-typedef boost::shared_ptr<CollisionGeometry_t> CollisionGeometryPtr_t;
+typedef shared_ptr<CollisionGeometry_t> CollisionGeometryPtr_t;
 typedef hpp::pinocchio::Transform3f Transform3f;
 typedef fcl::BVHModel<fcl::RSS> Polyhedron_t;
-typedef boost::shared_ptr<Polyhedron_t> PolyhedronPtr_t;
+typedef shared_ptr<Polyhedron_t> PolyhedronPtr_t;
 typedef fcl::ShapeBase BasicShape_t;
-typedef boost::shared_ptr<BasicShape_t> BasicShapePtr_t;
+typedef shared_ptr<BasicShape_t> BasicShapePtr_t;
 
 typedef std::map<std::string, BasicShapePtr_t> ShapeMap_t;
 typedef std::map<std::string, std::vector<fcl::Triangle> > TriangleMap_t;
