@@ -10,14 +10,14 @@
 
 #ifndef HPP_AFFORDANCE_CORBA_IMPL_HH
 #define HPP_AFFORDANCE_CORBA_IMPL_HH
-#include <omniORB4/CORBA.h>
 #include <hpp/fcl/BVH/BVH_model.h>
-#include "hpp/core/problem-solver.hh"
-#include "hpp/corbaserver/problem-solver-map.hh"
-#include "hpp/corbaserver/affordance/fwd.hh"
-#include "hpp/corbaserver/affordance/server.hh"
+#include <omniORB4/CORBA.h>
 
 #include "affordance-idl.hh"
+#include "hpp/corbaserver/affordance/fwd.hh"
+#include "hpp/corbaserver/affordance/server.hh"
+#include "hpp/corbaserver/problem-solver-map.hh"
+#include "hpp/core/problem-solver.hh"
 
 namespace hpp {
 namespace affordanceCorba {
@@ -40,25 +40,30 @@ class Afford : public virtual POA_hpp::corbaserver::affordance::Afford {
 
   void setMargin(const char* affType, CORBA::Double margin);
 
-  void setNeighbouringTriangleMargin(const char* affType, CORBA::Double nbTriMargin);
+  void setNeighbouringTriangleMargin(const char* affType,
+                                     CORBA::Double nbTriMargin);
 
   void setMinimumArea(const char* affType, CORBA::Double minArea);
 
   bool checkModel(const char* obstacleName);
 
-  void affordanceAnalysis(const char* obstacleName, const affordance::OperationBases_t& operations,
-                          std::vector<double> reduceSizes = std::vector<double>());
+  void affordanceAnalysis(
+      const char* obstacleName, const affordance::OperationBases_t& operations,
+      std::vector<double> reduceSizes = std::vector<double>());
 
-  void analyseObject(const char* obstacleName, const hpp::doubleSeq& reduceSizesCorba);
+  void analyseObject(const char* obstacleName,
+                     const hpp::doubleSeq& reduceSizesCorba);
 
   void analyseAll(const hpp::doubleSeq& reduceSizesCorba);
 
-  void deleteAffordancesByType(const char* affordance, const char* obstacleName);
+  void deleteAffordancesByType(const char* affordance,
+                               const char* obstacleName);
 
   void deleteAffordances(const char* obstacleName);
 
   void addAffObjects(const affordance::OperationBases_t& ops,
-                     const std::vector<affordance::CollisionObjects_t>& affObjs, const char* obstacleName);
+                     const std::vector<affordance::CollisionObjects_t>& affObjs,
+                     const char* obstacleName);
 
   hpp::doubleSeqSeqSeqSeq* getAffordancePoints(const char* affordance);
 

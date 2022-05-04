@@ -21,19 +21,19 @@ from hpp_idl.hpp.corbaserver.affordance import Afford
 
 class Client(_Parent):
     """
-  Connect and create clients for hpp-affordance library.
-  """
+    Connect and create clients for hpp-affordance library.
+    """
 
     defaultClients = {
-        'affordance': Afford,
+        "affordance": Afford,
     }
 
     def __init__(self, url=None, context="corbaserver", port=13331):
         """
-    Initialize CORBA and create default clients.
-    :param url: URL in the IOR, corbaloc, corbalocs, and corbanames formats.
-                For a remote corba server, use
-                url = "corbaloc:iiop:<host>:<port>/NameService"
-    """
+        Initialize CORBA and create default clients.
+        :param url: URL in the IOR, corbaloc, corbalocs, and corbanames formats.
+                    For a remote corba server, use
+                    url = "corbaloc:iiop:<host>:<port>/NameService"
+        """
         self._initOrb(url, port=port)
         self._makeClients("affordance", self.defaultClients, context)

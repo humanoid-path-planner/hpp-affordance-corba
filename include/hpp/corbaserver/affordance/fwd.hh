@@ -12,10 +12,11 @@
 #define HPP_AFFORDANCE_CORBA_FWD_HH
 
 // FIXME: should be replaced by CORBA base types forward declarations.
-#include <omniORB4/CORBA.h>
 #include <hpp/fcl/data_types.h>
-#include <hpp/core/fwd.hh>
+#include <omniORB4/CORBA.h>
+
 #include <hpp/affordance/fwd.hh>
+#include <hpp/core/fwd.hh>
 
 namespace hpp {
 namespace fcl {

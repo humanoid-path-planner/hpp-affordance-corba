@@ -8,11 +8,12 @@
 //
 // See the COPYING file for more information.
 
-#include <iostream>
-#include <hpp/util/debug.hh>
-#include "hpp/corbaserver/server.hh"
 #include <hpp/corbaserver/problem-solver-map.hh>
 #include <hpp/core/problem-solver.hh>
+#include <hpp/util/debug.hh>
+#include <iostream>
+
+#include "hpp/corbaserver/server.hh"
 
 typedef hpp::corbaServer::Server CorbaServer;
 typedef hpp::core::ProblemSolverPtr_t ProblemSolverPtr_t;
@@ -20,7 +21,8 @@ typedef hpp::core::ProblemSolver ProblemSolver;
 
 int main(int argc, const char* argv[]) {
   ProblemSolverPtr_t problemSolver = ProblemSolver::create();
-  CorbaServer corbaServer(problemSolver, argc, const_cast<const char**>(argv), true);
+  CorbaServer corbaServer(problemSolver, argc, const_cast<const char**>(argv),
+                          true);
 
   corbaServer.startCorbaServer();
   corbaServer.loadPlugin(corbaServer.mainContextId(), "affordance-corba.so");

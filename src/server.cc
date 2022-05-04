@@ -10,14 +10,16 @@
 
 #include "hpp/corbaserver/affordance/server.hh"
 
-#include <hpp/util/exception.hh>
-#include <hpp/util/debug.hh>
 #include <hpp/corbaserver/server.hh>
+#include <hpp/util/debug.hh>
+#include <hpp/util/exception.hh>
+
 #include "affordance.impl.hh"
 
 namespace hpp {
 namespace affordanceCorba {
-Server::Server(corbaServer::Server* server) : corbaServer::ServerPlugin(server), impl_(NULL) {}
+Server::Server(corbaServer::Server* server)
+    : corbaServer::ServerPlugin(server), impl_(NULL) {}
 
 Server::~Server() {
   if (impl_) delete impl_;
@@ -26,7 +28,8 @@ Server::~Server() {
 std::string Server::name() const { return "affordance"; }
 
 /// Start corba server
-void Server::startCorbaServer(const std::string& contextId, const std::string& contextKind) {
+void Server::startCorbaServer(const std::string& contextId,
+                              const std::string& contextKind) {
   initializeTplServer(impl_, contextId, contextKind, name(), "affordance");
   impl_->implementation().setServer(this);
 

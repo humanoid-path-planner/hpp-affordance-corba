@@ -27,7 +27,7 @@ module hpp
 				/// reset the current configuration of the given affordance type
 				/// requirement to default values
 				void resetAffordanceConfig() raises (Error);
-		
+
 				/// changes the default configuration of the given affordance type requirement
 				///
 				///	The configuration vector has size 3 and comprises the error margin,
@@ -63,7 +63,7 @@ module hpp
 				/// \param affType affordance type for which the change is made
 				/// \param margin new value for the error margin
 				void setMargin (in string affType, in double margin) raises (Error);
-				
+
 				/// changes the angle margin used to evaluate whether neighbouring
 				/// triangles form part of the potential affordance as the current
 				/// triangle.
@@ -81,19 +81,19 @@ module hpp
 					raises (Error);
 
         /// checks whether obstacle model is of a type compatible with
-        /// affordance analysis. The only accepted model type is 
+        /// affordance analysis. The only accepted model type is
         /// fcl::BVH_MODEL_TRIANGLES.
         /// \param obstacleName Name of the collisionObstacle to be checked.
         boolean checkModel (in string obstacleName) raises (Error);
 
-				/// creates collisionObjects for each found affordance of 
+				/// creates collisionObjects for each found affordance of
 				/// given object. Affordances are added to a container in problemSolver
 				///
 				/// \param obstacleName Name of the collisionObstacle to be analysed
         void analyseObject (in string obstacleName,in doubleSeq reduceSizes) raises (Error);
-				
+
 				/// creates collisionObjects for each affordance found in
-				/// the scene (goes through all obstacles). Affordances are added to 
+				/// the scene (goes through all obstacles). Affordances are added to
 				/// a container in problemSolver.
                                 void analyseAll (in doubleSeq reduceSizes) raises (Error);
 
@@ -103,7 +103,7 @@ module hpp
 				/// be deleted
 				void deleteAffordances (in string obstacleName) raises (Error);
 
-				/// deletes affordance objects of given affordance type 
+				/// deletes affordance objects of given affordance type
 				/// for a given obstacle
 				/// \param affordance Type of affordance to be deleted
 				/// \param obstacleName name of obstacle, the affordances of which will
@@ -115,7 +115,7 @@ module hpp
 				/// of specified aff type
 				/// \param affordance Affordance type for which triangle points
 				///	are searched.
-				doubleSeqSeqSeqSeq getAffordancePoints (in string affordance) 
+				doubleSeqSeqSeqSeq getAffordancePoints (in string affordance)
 					raises (Error);
 
 				/// returns a list of reference obstacles corresponding to the

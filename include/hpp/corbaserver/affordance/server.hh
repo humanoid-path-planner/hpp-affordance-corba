@@ -12,9 +12,10 @@
 #define HPP_AFFORDANCE_CORBA_SERVER_HH
 
 #include <hpp/corba/template/server.hh>
-#include <hpp/corbaserver/server-plugin.hh>
-#include <hpp/corbaserver/affordance/fwd.hh>
 #include <hpp/corbaserver/affordance/config.hh>
+#include <hpp/corbaserver/affordance/fwd.hh>
+#include <hpp/corbaserver/server-plugin.hh>
+
 #include "hpp/corbaserver/problem-solver-map.hh"
 
 namespace hpp {
@@ -30,7 +31,8 @@ class HPP_AFFORDANCE_CORBA_DLLAPI Server : public corbaServer::ServerPlugin {
   /// \brief Shutdown CORBA server
   ~Server();
 
-  void startCorbaServer(const std::string& contextId, const std::string& contextKind);
+  void startCorbaServer(const std::string& contextId,
+                        const std::string& contextKind);
 
   std::string name() const;
 
