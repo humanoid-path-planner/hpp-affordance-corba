@@ -1,7 +1,9 @@
 #  Humanoid Path Planner - AFFORDANCE-CORBA module
 
-[![Pipeline status](https://gepgitlab.laas.fr/humanoid-path-planner/hpp-affordance-corba/badges/master/pipeline.svg)](https://gepgitlab.laas.fr/humanoid-path-planner/hpp-affordance-corba/commits/master)
-[![Coverage report](https://gepgitlab.laas.fr/humanoid-path-planner/hpp-affordance-corba/badges/master/coverage.svg?job=doc-coverage)](http://projects.laas.fr/gepetto/doc/humanoid-path-planner/hpp-affordance-corba/master/coverage/)
+[![Pipeline status](https://gitlab.laas.fr/humanoid-path-planner/hpp-affordance-corba/badges/master/pipeline.svg)](https://gitlab.laas.fr/humanoid-path-planner/hpp-affordance-corba/commits/master)
+[![Coverage report](https://gitlab.laas.fr/humanoid-path-planner/hpp-affordance-corba/badges/master/coverage.svg?job=doc-coverage)](https://gepettoweb.laas.fr/doc/humanoid-path-planner/hpp-affordance-corba/master/coverage/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/humanoid-path-planner/hpp-affordance-corba/master.svg)](https://results.pre-commit.ci/latest/github/humanoid-path-planner/hpp-affordance-corba)
 
 Copyright 2016-2019 LAAS-CNRS
 
