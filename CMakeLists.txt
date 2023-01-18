@@ -32,11 +32,14 @@ project(${PROJECT_NAME} ${PROJECT_ARGS})
 list(APPEND PKG_CONFIG_ADDITIONAL_VARIABLES cmake_plugin)
 
 # Dependencies
-findpython()
 add_project_dependency("hpp-core" REQUIRED)
 add_project_dependency("hpp-affordance" REQUIRED)
 add_project_dependency("hpp-corbaserver" REQUIRED)
 add_required_dependency("omniORB4 >= 4.1.4")
+# search for python
+if(NOT FINDPYTHON_ALREADY_CALLED)
+  findpython()
+endif()
 
 # Make sure that python submodule is installed in the same prefix as module.
 if(NOT ${HPP_CORBASERVER_PREFIX} STREQUAL ${CMAKE_INSTALL_PREFIX})
