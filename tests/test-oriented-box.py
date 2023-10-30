@@ -1,14 +1,14 @@
 # Import Gepetto viewer helpwer class
 # Import robot. Needed to create a robot instance for the viewer application
+# Import Problem solver (holds most of the generated data)
+from hpp.corbaserver.problem_solver import ProblemSolver
+from hpp.gepetto import Viewer
+
 from hpp.corbaserver.affordance import Robot
 
 # Import the affordance helper class to extract useful surface
 # objects from the environment, and create an instance of affordanceTool
 from hpp.corbaserver.affordance.affordance import AffordanceTool
-
-# Import Problem solver (holds most of the generated data)
-from hpp.corbaserver.problem_solver import ProblemSolver
-from hpp.gepetto import Viewer
 
 # Create instance of the hyq robot, the problem solver and the viewer
 robot = Robot("hyq")

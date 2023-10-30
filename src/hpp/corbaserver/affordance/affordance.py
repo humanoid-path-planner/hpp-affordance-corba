@@ -18,8 +18,9 @@
 
 from __future__ import print_function
 
-from hpp.corbaserver.affordance.client import Client as AffClient
 from hpp.corbaserver.client import Client as BasicClient
+
+from hpp.corbaserver.affordance.client import Client as AffClient
 
 
 class CorbaClient:
