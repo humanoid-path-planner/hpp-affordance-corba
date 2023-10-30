@@ -12,7 +12,7 @@
 # Public License along with hpp-affordance-corba.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.10)
 
 set(PROJECT_NAME hpp-affordance-corba)
 set(PROJECT_DESCRIPTION
