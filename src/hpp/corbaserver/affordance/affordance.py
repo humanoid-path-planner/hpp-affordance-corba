@@ -16,11 +16,9 @@
 # hpp-affordance-corba.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
-
-from hpp.corbaserver.client import Client as BasicClient
 
 from hpp.corbaserver.affordance.client import Client as AffClient
+from hpp.corbaserver.client import Client as BasicClient
 
 
 class CorbaClient:
@@ -37,7 +35,7 @@ class CorbaClient:
             self.affordance = AffClient(context=context, port=port)
 
 
-class AffordanceTool(object):
+class AffordanceTool:
     """
     \\brief Load and handle an AffordanceTool for analysis of the environment.
 
@@ -251,7 +249,7 @@ class AffordanceTool(object):
          \\colour vector of length 4 (normalized rgba)  defined in the interval [0, 1]
         """
         if len(colour) < 4:  # if the colour is only rgb we suppose alpha = 1
-            colour = colour + [1]
+            colour = [*colour, 1]
         self.deleteNode(str(affType), True, Viewer)
         objs = self.getAffordancePoints(affType)
         refs = self.getAffRefObstacles(affType)
@@ -321,7 +319,7 @@ class AffordanceTool(object):
                 will be visualised
         """
         if len(colour) < 4:  # if the colour is only rgb we suppose alpha = 1
-            colour = colour + [1]
+            colour = [*colour, 1]
         if obstacleName == "":
             return self.visualiseAllAffordances(affType, Viewer, colour)
         else:

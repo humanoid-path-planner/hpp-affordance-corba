@@ -15,6 +15,8 @@
 # hpp-affordance-corba.  If not, see
 # <http://www.gnu.org/licenses/>.
 
+import typing
+
 from hpp.corbaserver.client import Client as _Parent
 from hpp_idl.hpp.corbaserver.affordance import Afford
 
@@ -24,7 +26,7 @@ class Client(_Parent):
     Connect and create clients for hpp-affordance library.
     """
 
-    defaultClients = {
+    defaultClients: typing.ClassVar = {
         "affordance": Afford,
     }
 
