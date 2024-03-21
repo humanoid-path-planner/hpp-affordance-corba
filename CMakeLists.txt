@@ -59,8 +59,8 @@ set(${PROJECT_NAME}_SOURCES src/${PROJECT_NAME}.cc)
 # Standalone corba server
 add_executable(hpp-affordance-server ${${PROJECT_NAME}_SOURCES}
                                      ${${PROJECT_NAME}_HEADERS})
-target_include_directories(hpp-affordance-server
-                           PUBLIC $<INSTALL_INTERFACE:include>)
+target_include_directories(
+  hpp-affordance-server PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 target_link_libraries(hpp-affordance-server hpp-corbaserver::hpp-corbaserver
                       hpp-affordance::hpp-affordance)
 install(
