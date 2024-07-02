@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719745305,
-        "narHash": "sha256-xwgjVUpqSviudEkpQnioeez1Uo2wzrsMaJKJClh+Bls=",
+        "lastModified": 1719877454,
+        "narHash": "sha256-g5N1yyOSsPNiOlFfkuI/wcUjmtah+nxdImJqrSATjOU=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "c3c5ecc05edc7dafba779c6c1a61cd08ac6583e9",
+        "rev": "4e3583423212f9303aa1a6337f8dffb415920e4f",
         "type": "github"
       },
       "original": {
@@ -30,16 +30,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1719747792,
-        "narHash": "sha256-73aaDAWTnjoiOywas+kObTUu9JwMAz0dzz1wwMXjTXU=",
+        "lastModified": 1719770510,
+        "narHash": "sha256-RCpc+rNs9khy3LGKmiTuqQ8P7dJtdqAYvLU4yq9OiEU=",
         "owner": "humanoid-path-planner",
         "repo": "hpp-affordance",
-        "rev": "72860a95371f3d888baef9ad32a009c03ae0f0c1",
+        "rev": "a90f8e0e79c117f3530b8fa8c5e51412106c1da4",
         "type": "github"
       },
       "original": {
         "owner": "humanoid-path-planner",
-        "ref": "release/5.1.0",
         "repo": "hpp-affordance",
         "type": "github"
       }
@@ -87,16 +86,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1719745070,
-        "narHash": "sha256-mzhI7/31RNZf8JTe3BNa34MDI4vGE0XkqmcbaeHKpBQ=",
+        "lastModified": 1719772432,
+        "narHash": "sha256-qFcBT/YDTsrAzEE//JmCbk1TnVrnYcme1WCzkPaXwZ0=",
         "owner": "humanoid-path-planner",
         "repo": "hpp-corbaserver",
-        "rev": "db386e9b303ee8a965821a55231cc6e46a250ae0",
+        "rev": "f623d8cd51e627a12e7c6f240781dd7f4a5b7ddf",
         "type": "github"
       },
       "original": {
         "owner": "humanoid-path-planner",
-        "ref": "release/5.1.0",
         "repo": "hpp-corbaserver",
         "type": "github"
       }
@@ -114,11 +112,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719747485,
-        "narHash": "sha256-Vhd0aKFp7uP/6tXDF1SpNOrhE6vKKcLlziH0xTI9Zz8=",
+        "lastModified": 1719586831,
+        "narHash": "sha256-oRFZsERQKzaW2NvgcKcxqJZtqtlk7rqDK2inhUTABiQ=",
         "owner": "humanoid-path-planner",
         "repo": "hpp-core",
-        "rev": "d1fb6edcf1ae00b791e67b43bc91d80516d41c28",
+        "rev": "733f884a03cde41aeae18758a26b28cf6fdf02fa",
         "type": "github"
       },
       "original": {

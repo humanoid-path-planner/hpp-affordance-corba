@@ -13,14 +13,14 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     hpp-affordance = {
-      url = "github:humanoid-path-planner/hpp-affordance/release/5.1.0";
+      url = "github:humanoid-path-planner/hpp-affordance";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
     hpp-corbaserver = {
-      url = "github:humanoid-path-planner/hpp-corbaserver/release/5.1.0";
+      url = "github:humanoid-path-planner/hpp-corbaserver";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
