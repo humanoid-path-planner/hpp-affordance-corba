@@ -332,11 +332,19 @@ hpp::doubleSeqSeqSeqSeq* Afford::getAffordancePoints(char const* affordance) {
     tris.length((CORBA::ULong)nbTris);
     for (std::size_t triIdx = 0; triIdx < nbTris; triIdx++) {
       hpp::doubleSeqSeq triangle;
+#if HPP_FCL_VERSION_AT_LEAST(3, 0, 0)
       const fcl::Triangle& refTri = (*model->tri_indices)[triIdx];
+#else
+      const fcl::Triangle& refTri = model->tri_indices[triIdx];
+#endif
       triangle.length(3);
       for (unsigned int vertIdx = 0; vertIdx < 3; vertIdx++) {
         fcl::Vec3f p(affObjs[affIdx].second->fcl()->getRotation() *
+#if HPP_FCL_VERSION_AT_LEAST(3, 0, 0)
                          (*model->vertices)[refTri[vertIdx]] +
+#else
+                         model->vertices[refTri[vertIdx]] +
+#endif
                      affObjs[affIdx].second->fcl()->getTranslation());
         hpp::doubleSeq point;
         // point always 3D
