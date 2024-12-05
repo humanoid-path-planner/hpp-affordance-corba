@@ -140,11 +140,11 @@ void Afford::setMinimumArea(const char* affType, CORBA::Double minArea) {
 
 bool isBVHModelTriangles(
     const hpp::pinocchio::FclCollisionObjectPtr_t& object) {
-  if (object->collisionGeometry()->getNodeType() == fcl::BV_OBBRSS) {
+  if (object->collisionGeometry()->getNodeType() == coal::BV_OBBRSS) {
     const affordance::BVHModelOBConst_Ptr_t model =
         static_pointer_cast<const affordance::BVHModelOB>(
             object->collisionGeometry());
-    if (model->getModelType() == fcl::BVH_MODEL_TRIANGLES) {
+    if (model->getModelType() == coal::BVH_MODEL_TRIANGLES) {
       return true;
     }
   }
@@ -179,9 +179,9 @@ void Afford::affordanceAnalysis(const char* obstacleName,
   try {
     affordance::SemanticsDataPtr_t aff = affordance::affordanceAnalysis(
         (problemSolver()->obstacle(obstacleName)->fcl()), operations);
-    std::vector<std::vector<fcl::CollisionObjectPtr_t> > affObjs =
+    std::vector<std::vector<coal::CollisionObjectPtr_t> > affObjs =
         affordance::getReducedAffordanceObjects(aff, reduceSizes);
-    // add fcl::CollisionObstacles to problemSolver
+    // add coal::CollisionObstacles to problemSolver
     addAffObjects(operations, affObjs, obstacleName);
   } catch (const std::exception& exc) {
     throw Error(exc.what());
@@ -332,20 +332,12 @@ hpp::doubleSeqSeqSeqSeq* Afford::getAffordancePoints(char const* affordance) {
     tris.length((CORBA::ULong)nbTris);
     for (std::size_t triIdx = 0; triIdx < nbTris; triIdx++) {
       hpp::doubleSeqSeq triangle;
-#if HPP_FCL_VERSION_AT_LEAST(3, 0, 0)
-      const fcl::Triangle& refTri = (*model->tri_indices)[triIdx];
-#else
-      const fcl::Triangle& refTri = model->tri_indices[triIdx];
-#endif
+      const coal::Triangle& refTri = (*model->tri_indices)[triIdx];
       triangle.length(3);
       for (unsigned int vertIdx = 0; vertIdx < 3; vertIdx++) {
-        fcl::Vec3f p(affObjs[affIdx].second->fcl()->getRotation() *
-#if HPP_FCL_VERSION_AT_LEAST(3, 0, 0)
-                         (*model->vertices)[refTri[vertIdx]] +
-#else
-                         model->vertices[refTri[vertIdx]] +
-#endif
-                     affObjs[affIdx].second->fcl()->getTranslation());
+        coal::Vec3f p(affObjs[affIdx].second->fcl()->getRotation() *
+                          (*model->vertices)[refTri[vertIdx]] +
+                      affObjs[affIdx].second->fcl()->getTranslation());
         hpp::doubleSeq point;
         // point always 3D
         point.length(3);

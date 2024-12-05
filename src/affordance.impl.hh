@@ -10,7 +10,7 @@
 
 #ifndef HPP_AFFORDANCE_CORBA_IMPL_HH
 #define HPP_AFFORDANCE_CORBA_IMPL_HH
-#include <hpp/fcl/BVH/BVH_model.h>
+#include <coal/BVH/BVH_model.h>
 #include <omniORB4/CORBA.h>
 
 #include "affordance-idl.hh"

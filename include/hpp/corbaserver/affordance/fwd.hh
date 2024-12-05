@@ -12,36 +12,36 @@
 #define HPP_AFFORDANCE_CORBA_FWD_HH
 
 // FIXME: should be replaced by CORBA base types forward declarations.
-#include <hpp/fcl/data_types.h>
+#include <coal/data_types.h>
 #include <omniORB4/CORBA.h>
 
 #include <hpp/affordance/fwd.hh>
 #include <hpp/core/fwd.hh>
 
-namespace hpp {
-namespace fcl {
+namespace coal {
 template <typename T>
 class BVHModel;
 class CollisionGeometry;
 class RSS;
 class ShapeBase;
 class Triangle;
-}  // namespace fcl
+}  // namespace coal
+namespace hpp {
 namespace affordanceCorba {
 typedef core::ProblemSolver ProblemSolver;
 typedef core::ProblemSolverPtr_t ProblemSolverPtr_t;
 
-typedef fcl::CollisionGeometry CollisionGeometry_t;
+typedef coal::CollisionGeometry CollisionGeometry_t;
 typedef shared_ptr<CollisionGeometry_t> CollisionGeometryPtr_t;
-typedef hpp::pinocchio::Transform3f Transform3f;
-typedef fcl::BVHModel<fcl::RSS> Polyhedron_t;
+typedef hpp::pinocchio::Transform3s Transform3s;
+typedef coal::BVHModel<coal::RSS> Polyhedron_t;
 typedef shared_ptr<Polyhedron_t> PolyhedronPtr_t;
-typedef fcl::ShapeBase BasicShape_t;
+typedef coal::ShapeBase BasicShape_t;
 typedef shared_ptr<BasicShape_t> BasicShapePtr_t;
 
 typedef std::map<std::string, BasicShapePtr_t> ShapeMap_t;
-typedef std::map<std::string, std::vector<fcl::Triangle> > TriangleMap_t;
-typedef std::map<std::string, std::vector<fcl::Vec3f> > VertexMap_t;
+typedef std::map<std::string, std::vector<coal::Triangle> > TriangleMap_t;
+typedef std::map<std::string, std::vector<coal::Vec3f> > VertexMap_t;
 
 typedef hpp::pinocchio::matrix_t matrix_t;
 typedef hpp::pinocchio::vector_t vector_t;

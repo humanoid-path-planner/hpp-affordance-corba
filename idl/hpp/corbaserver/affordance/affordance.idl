@@ -82,7 +82,7 @@ module hpp
 
         /// checks whether obstacle model is of a type compatible with
         /// affordance analysis. The only accepted model type is
-        /// fcl::BVH_MODEL_TRIANGLES.
+        /// coal::BVH_MODEL_TRIANGLES.
         /// \param obstacleName Name of the collisionObstacle to be checked.
         boolean checkModel (in string obstacleName) raises (Error);
 
