@@ -2,7 +2,7 @@
   description = "corbaserver to provide affordance utilities in python";
 
   inputs = {
-    nixpkgs.url = "github:gepetto/nixpkgs/hpp";
+    nixpkgs.url = "github:NixOS/nixpkgs/refs/pull/362956/head";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
