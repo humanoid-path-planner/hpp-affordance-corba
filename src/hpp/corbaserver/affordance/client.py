@@ -17,9 +17,8 @@
 
 import typing
 
-from hpp_idl.hpp.corbaserver.affordance import Afford
-
 from hpp.corbaserver.client import Client as _Parent
+from hpp_idl.hpp.corbaserver.affordance import Afford
 
 
 class Client(_Parent):
