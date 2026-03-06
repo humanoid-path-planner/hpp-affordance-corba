@@ -3,6 +3,7 @@
 
   inputs = {
     gepetto.url = "github:gepetto/nix";
+    gazebros2nix.follows = "gepetto/gazebros2nix";
     flake-parts.follows = "gepetto/flake-parts";
     nixpkgs.follows = "gepetto/nixpkgs";
     nix-ros-overlay.follows = "gepetto/nix-ros-overlay";
@@ -13,38 +14,29 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
-      { lib, self, ... }:
+      { lib, ... }:
       {
         systems = import inputs.systems;
         imports = [
           inputs.gepetto.flakeModule
-          { gepetto-pkgs.overlays = [ self.overlays.default ]; }
-        ];
-        flake.overlays.default = _final: prev: {
-          hpp-affordance-corba = prev.hpp-affordance-corba.overrideAttrs {
-            src = lib.fileset.toSource {
-              root = ./.;
-              fileset = lib.fileset.unions [
-                ./CMakeLists.txt
-                ./data
-                ./doc
-                ./idl
-                ./include
-                ./package.xml
-                ./src
-                ./tests
-              ];
-            };
-          };
-        };
-        perSystem =
-          { pkgs, self', ... }:
           {
-            packages = {
-              default = self'.packages.hpp-affordance-corba;
-              hpp-affordance-corba = pkgs.python3Packages.hpp-affordance-corba;
+            gazebros2nix.overrides.hpp-affordance-corba = _final: {
+              src = lib.fileset.toSource {
+                root = ./.;
+                fileset = lib.fileset.unions [
+                  ./CMakeLists.txt
+                  ./data
+                  ./doc
+                  ./idl
+                  ./include
+                  ./package.xml
+                  ./src
+                  ./tests
+                ];
+              };
             };
-          };
+          }
+        ];
       }
     );
 }
